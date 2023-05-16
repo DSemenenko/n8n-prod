@@ -8,21 +8,29 @@ import {
 } from 'n8n-workflow';
 import axios from 'axios'; // Добавляем axios
 
-export class ExampleNode implements INodeType {
+export class BitrixNode implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Example Node',
-		name: 'exampleNode',
+		displayName: 'Bitrix Node',
+		name: 'BitrixNode',
 		group: ['transform'],
 		version: 1,
 		description: 'Basic Example Node',
 		defaults: {
-			name: 'Example Node',
+			name: 'Bitrix Node',
 		},
 		inputs: ['main'],
 		outputs: ['main'],
 		properties: [
 			// Node properties which the user gets displayed and
 			// can change on the node.
+			{
+				displayName: 'Responsible',
+				name: 'responsible',
+				type: 'string',
+				default: '',
+				placeholder: 'responsible...',
+				description: 'The description text',
+			},
 			{
 				displayName: 'Name',
 				name: 'name',
@@ -192,6 +200,7 @@ export class ExampleNode implements INodeType {
 		let UF_CRM_1612173967: string;
 		let UF_CRM_1614422466: string;
 		let UTM: string;
+		let ASSIGNED_BY_ID: string;
 
 
 		// Iterates over all input items and add the key "myString" with the
@@ -212,6 +221,7 @@ export class ExampleNode implements INodeType {
 				UF_CRM_1612173967 = this.getNodeParameter('marker', itemIndex, '') as string;
 				UF_CRM_1614422466 = this.getNodeParameter('ga', itemIndex, '') as string;
 				UTM = this.getNodeParameter('utm', itemIndex, '') as string;
+				ASSIGNED_BY_ID = this.getNodeParameter('responsible', itemIndex, '') as string;
  
 				item = items[itemIndex];
 
@@ -231,6 +241,7 @@ export class ExampleNode implements INodeType {
 
 				item.json = {
 					fields: {
+						ASSIGNED_BY_ID,
 						NAME,
 						PHONE: [ { VALUE: PHONE, VALUE_TYPE: "WORK" } ],
 						EMAIL: [ { VALUE: EMAIL, VALUE_TYPE: "WORK" } ],
