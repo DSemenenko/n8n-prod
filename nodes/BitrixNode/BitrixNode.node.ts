@@ -161,7 +161,7 @@ export class BitrixNode implements INodeType {
 
 			async getSource(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]>{
 				const response = await axios.get('https://crm.axcap.ae/rest/1/y9x9q1wmj1mwq5bu/crm.status.list?filter[ENTITY_ID]=SOURCE')
-    			const data = response.data.result.map((item: any) => ({name: item.NAME, value: item.ID}))
+    			const data = response.data.result.map((item: any) => ({name: item.NAME, value: item.STATUS_ID}))
 				return data
 			},
 			
