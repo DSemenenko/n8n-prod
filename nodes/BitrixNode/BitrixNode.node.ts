@@ -32,6 +32,14 @@ export class BitrixNode implements INodeType {
 				description: 'The description text',
 			},
 			{
+				displayName: 'Status ID',
+				name: 'status_id',
+				type: 'string',
+				default: '',
+				placeholder: 'Set status...',
+				description: 'The description text',
+			},
+			{
 				displayName: 'Name',
 				name: 'name',
 				type: 'string',
@@ -137,13 +145,55 @@ export class BitrixNode implements INodeType {
 				description: 'The description text',
 			},
 			{
-				displayName: 'UTM Text',
+				displayName: 'UTM text',
 				name: 'utm',
 				type: 'string',
 				default: '',
-				placeholder: 'UTM...',
+				placeholder: 'UTM text...',
 				description: 'The description text',
 			},
+			{
+				displayName: 'UTM Source',
+				name: 'utm_source',
+				type: 'string',
+				default: '',
+				placeholder: 'UTM source...',
+				description: 'The description text',
+			},
+			{
+				displayName: 'UTM Campaign',
+				name: 'utm_campaign',
+				type: 'string',
+				default: '',
+				placeholder: 'UTM source...',
+				description: 'The description text',
+			},
+			{
+				displayName: 'UTM Contect',
+				name: 'utm_content',
+				type: 'string',
+				default: '',
+				placeholder: 'UTM content...',
+				description: 'The description text',
+			},
+			{
+				displayName: 'UTM TERM',
+				name: 'utm_term',
+				type: 'string',
+				default: '',
+				placeholder: 'UTM term...',
+				description: 'The description text',
+			},
+			{
+				displayName: 'UTM Medium',
+				name: 'utm_medium',
+				type: 'string',
+				default: '',
+				placeholder: 'UTM medium...',
+				description: 'The description text',
+			},
+		
+			
 			
 		],	
 		
@@ -199,8 +249,14 @@ export class BitrixNode implements INodeType {
 		let UF_CRM_1612173846: string;
 		let UF_CRM_1612173967: string;
 		let UF_CRM_1614422466: string;
-		let UTM: string;
+		let UF_CRM_1561890132: string;
 		let ASSIGNED_BY_ID: string;
+		let UTM_SOURCE: string;
+		let UTM_CAMPAIGN: string;
+		let UTM_CONTENT: string;
+		let UTM_TERM: string;
+		let UTM_MEDIUM: string;
+		let STATUS_ID: string; 
 
 
 		// Iterates over all input items and add the key "myString" with the
@@ -220,8 +276,15 @@ export class BitrixNode implements INodeType {
 				UF_CRM_1612173846 = this.getNodeParameter('url', itemIndex, '') as string;
 				UF_CRM_1612173967 = this.getNodeParameter('marker', itemIndex, '') as string;
 				UF_CRM_1614422466 = this.getNodeParameter('ga', itemIndex, '') as string;
-				UTM = this.getNodeParameter('utm', itemIndex, '') as string;
+				UF_CRM_1561890132 = this.getNodeParameter('utm', itemIndex, '') as string;
 				ASSIGNED_BY_ID = this.getNodeParameter('responsible', itemIndex, '') as string;
+				UTM_SOURCE = this.getNodeParameter('utm_source', itemIndex, '') as string;
+				UTM_CAMPAIGN = this.getNodeParameter('utm_campaign', itemIndex, '') as string;
+				UTM_CONTENT = this.getNodeParameter('utm_content', itemIndex, '') as string;
+				UTM_TERM = this.getNodeParameter('utm_term', itemIndex, '') as string;
+				UTM_MEDIUM = this.getNodeParameter('utm_medium', itemIndex, '') as string;
+				STATUS_ID = this.getNodeParameter('status_id', itemIndex, '') as string;
+
  
 				item = items[itemIndex];
 
@@ -237,7 +300,7 @@ export class BitrixNode implements INodeType {
 				item.json['url'] = UF_CRM_1612173846;
 				item.json['marker'] = UF_CRM_1612173967;
 				item.json['ga'] = UF_CRM_1614422466;
-				item.json['utm'] = UTM;
+				item.json['utm'] = UF_CRM_1561890132;
 
 				item.json = {
 					fields: {
@@ -254,7 +317,13 @@ export class BitrixNode implements INodeType {
 						UF_CRM_1612173846, 
 						UF_CRM_1612173967,
 						UF_CRM_1614422466, 
-						UTM
+						UF_CRM_1561890132, 
+						UTM_SOURCE,
+						UTM_CAMPAIGN,
+						UTM_CONTENT,
+						UTM_TERM,
+						UTM_MEDIUM, 
+						STATUS_ID
 					}
 				}
 				
